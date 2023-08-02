@@ -7,26 +7,31 @@ interface TaskListProps {
 }
 
 const TaskList: FC<TaskListProps> = ({ tasks, onDelete }) => {
+
   return !tasks ? (
     <p>No tasks yet.</p>
   ) : (
     <table>
-      <tr>
-        <th>Title</th>
-        <th>Due Date</th>
-        <th>Category</th>
-        <th>WOW</th>
-      </tr>
-      {tasks.map((task) => (
-        <tr key={task.id}>
-          <td>{task.title}</td>
-          <td>{task.dueDate.toDateString()}</td>
-          <td>{task.category}</td>
-          <td>
-            <button onClick={() => onDelete(task.id)}>DELETE</button>
-          </td>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Due Date</th>
+          <th>Category</th>
+          <th>WOW</th>
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {tasks.map((task) => (
+          <tr key={task.id}>
+            <td>{task.title}</td>
+            <td>{new Date(task.dueDate).toLocaleDateString()}</td>
+            <td>{task.category}</td>
+            <td>
+              <button onClick={() => onDelete(task.id)}>DELETE</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }

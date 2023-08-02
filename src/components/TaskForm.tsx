@@ -4,7 +4,7 @@ import * as z from 'zod'
 
 const taskFormSchema = z.object({
   title: z.string().min(3).max(50),
-  dueDate: z.coerce.date().min(new Date(), {message: 'Please use a future date'}),
+  dueDate: z.date().min(new Date(), {message: 'Please use a future date'}),
   category: z.string(),
 })
 
@@ -33,7 +33,7 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
 
       <input
         type='date'
-        {...register('dueDate')}
+        {...register('dueDate', {valueAsDate: true})}
       />
       <p>{errors.dueDate?.message}</p>
 

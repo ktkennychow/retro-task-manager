@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { Task } from './types'
 import TaskForm from './components/TaskForm'
@@ -6,6 +6,19 @@ import TaskList from './components/TaskList'
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
+  useEffect(() => {
+    const localTasks = JSON.parse(localStorage.getItem('tasks') || '""')
+    if (localTasks) {
+      setTasks(localTasks)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+  }, [tasks])
+
   const handleAddTask = (task: Omit<Task, 'id'>) => {
     setTasks([
       ...tasks,
