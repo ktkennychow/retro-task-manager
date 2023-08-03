@@ -29,10 +29,10 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
   return (
     <form
       onSubmit={handleSubmit(submitHandler)}
-      className='border-2 border-gray-900 p-2'>
+      className='border-2 border-gray-900 p-2 flex flex-col gap-1'>
       <input
         {...register('title')}
-        className='bg-gray-200 w-full px-2'
+        className='bg-gray-200 px-2'
         placeholder='New Tasks'
       />
       <p>{errors.title?.message}</p>
@@ -40,10 +40,11 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
       <input
         type='date'
         {...register('dueDate', { valueAsDate: true })}
+        className='p-1'
       />
       <p>{errors.dueDate?.message}</p>
 
-      <select {...register('category')}>
+      <select {...register('category')} className='p-0.5'>
         <option value='work'>Work</option>
         <option value='personal'>Personal</option>
         <option value='school'>School</option>
@@ -52,7 +53,7 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
 
       <input
         type='submit'
-        className='bg-zinc-500 p-1 text-white'
+        className='bg-zinc-500 py-1 px-2 text-white'
       />
     </form>
   )

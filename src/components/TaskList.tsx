@@ -31,7 +31,7 @@ const TaskList: FC<TaskListProps> = ({ tasks, onDelete }) => {
             <td>
               <button
                 onClick={() => onDelete(task.id)}
-                className='text-white p-1 bg-red-500'>
+                className='text-white py-1 px-2 bg-red-500'>
                 DELETE
               </button>
             </td>
