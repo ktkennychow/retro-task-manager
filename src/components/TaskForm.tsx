@@ -27,7 +27,9 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className='border-2 border-gray-900 p-2'>
+    <form
+      onSubmit={handleSubmit(submitHandler)}
+      className='border-2 border-gray-900 p-2'>
       <input
         {...register('title')}
         className='bg-gray-200 w-full px-2'
@@ -38,11 +40,10 @@ const TaskForm = ({ onSubmit }: TaskForm) => {
       <input
         type='date'
         {...register('dueDate', { valueAsDate: true })}
-        
       />
       <p>{errors.dueDate?.message}</p>
 
-      <select {...register('category') }>
+      <select {...register('category')}>
         <option value='work'>Work</option>
         <option value='personal'>Personal</option>
         <option value='school'>School</option>
