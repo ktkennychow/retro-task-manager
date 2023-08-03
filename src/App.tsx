@@ -35,7 +35,7 @@ function App() {
   }
 
   return (
-    <div className='max-w-3xl'>
+    <div className='max-w-3xl mx-auto'>
       <h1 className='font-title text-base md:text-xl bg-gray-200 p-2'>TASK MANAGER FOR NERDS</h1>
       <TaskForm onSubmit={handleAddTask} />
       <TaskList
