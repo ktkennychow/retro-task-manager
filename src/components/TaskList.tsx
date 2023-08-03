@@ -24,8 +24,8 @@ const TaskList: FC<TaskListProps> = ({ tasks, onDelete }) => {
         {tasks.map((task) => (
           <tr
             key={task.id}
-            className='border-2 border-gray-900'>
-            <td>{task.title}</td>
+            className='border-2 border-gray-900 w-full'>
+            <td className='w-1/2'>{task.title}</td>
             <td>{new Date(task.dueDate).toLocaleDateString()}</td>
             <td>{task.category}</td>
             <td>
